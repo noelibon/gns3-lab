@@ -1,0 +1,21 @@
+Listen 80
+Listen 8080
+ServerName www.woodytoys.lab
+
+IncludeOptional mods-enabled/*.load
+IncludeOptional mods-enabled/*.conf
+
+ErrorLog /var/log/apache2/error.log
+LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
+CustomLog /var/log/apache2/access.log combined
+LogLevel debug
+
+DirectoryIndex index.html
+DirectoryIndex disabled
+DirectoryIndex test.html
+DocumentRoot /home/user/html
+ServerAdmin n.libon@students.ephec.be
+
+<Directory "/home/user/html">
+    Require ip 192.168.0.14
+</Directory>
